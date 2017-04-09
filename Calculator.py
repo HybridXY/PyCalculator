@@ -31,7 +31,16 @@ def clear():
 
 def equals():
 	global stringnum
-	result = eval(stringnum)
+	try:
+		result = eval(stringnum)
+	except SyntaxError:
+		entry_window.delete(0,END)
+		entry_window.insert(0,"MATH ERROR")
+	try:
+		number.set(result)
+	except UnboundLocalError:
+		entry_window.delete(0,END)
+		entry_window.insert(0,"MATH ERROR")
 	number.set(result)
 	stringnum = ""
 #*****************************************************************************************************************************************
